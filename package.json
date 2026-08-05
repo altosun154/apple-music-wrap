@@ -1,0 +1,12 @@
+{
+  "name": "apple-music-wrap",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static, client-side Wrapped-style deep dive into your Apple Music library.",
+  "scripts": {
+    "token": "node scripts/generate-token.js"
+  },
+  "devDependencies": {
+    "jsonwebtoken": "^9.0.2"
+  }
+}

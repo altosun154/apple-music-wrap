@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Apple Music Wrap</title>
+<meta name="description" content="A deep dive into your Apple Music library, styled like Wrapped." />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="bg-orbs" aria-hidden="true">
+  <span class="orb orb-a"></span>
+  <span class="orb orb-b"></span>
+  <span class="orb orb-c"></span>
+</div>
+
+<main id="app">
+
+  <!-- LANDING -->
+  <section class="screen" id="screen-landing" data-active="true">
+    <div class="landing-content">
+      <div class="logo-mark" aria-hidden="true">♫</div>
+      <h1>Apple Music<br /><span class="accent">Wrap</span></h1>
+      <p class="subhead">A library deep-dive, not just your last few weeks. Sign in and we'll dig through everything you've saved &mdash; genres, artists, albums, decades, and more &mdash; and wrap it up in a few shareable cards.</p>
+
+      <button class="btn btn-primary" id="btn-connect">
+        <span class="apple-mark" aria-hidden="true"></span> Connect Apple Music
+      </button>
+      <button class="btn btn-ghost" id="btn-demo">Preview with sample data</button>
+
+      <p class="fineprint">Runs entirely in your browser. Your library data is never sent to a server &mdash; it's fetched straight from Apple's API to this page and stays there.</p>
+
+      <div class="token-callout" id="token-callout" hidden>
+        <p>No developer token is configured yet. Paste one below to test locally (stored only in this browser).</p>
+        <div class="token-row">
+          <input type="password" id="token-input" placeholder="Paste MusicKit developer token" autocomplete="off" spellcheck="false" />
+          <button class="btn btn-small" id="btn-save-token">Save</button>
+        </div>
+      </div>
+
+      <p class="error-msg" id="landing-error" hidden></p>
+    </div>
+  </section>
+
+  <!-- LOADING -->
+  <section class="screen" id="screen-loading">
+    <div class="loading-content">
+      <div class="spinner" aria-hidden="true"></div>
+      <p id="loading-status">Connecting&hellip;</p>
+    </div>
+  </section>
+
+  <!-- WRAPPED SLIDES -->
+  <section class="screen" id="screen-wrapped">
+    <div class="slides" id="slides"></div>
+
+    <nav class="slide-nav" aria-label="Wrapped navigation">
+      <button class="nav-btn" id="btn-prev" aria-label="Previous">&larr;</button>
+      <div class="slide-dots" id="slide-dots"></div>
+      <button class="nav-btn" id="btn-next" aria-label="Next">&rarr;</button>
+    </nav>
+
+    <button class="btn-restart" id="btn-restart" aria-label="Start over">&times;</button>
+  </section>
+
+</main>
+
+<template id="tpl-slide">
+  <article class="slide">
+    <div class="slide-inner">
+      <p class="slide-eyebrow"></p>
+      <h2 class="slide-headline"></h2>
+      <div class="slide-body"></div>
+    </div>
+  </article>
+</template>
+
+<script src="https://js-cdn.music.apple.com/musickit/v3/musickit.js" data-web-components async></script>
+<script src="config.js"></script>
+<script src="mock-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
