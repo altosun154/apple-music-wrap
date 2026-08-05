@@ -490,8 +490,10 @@
 
     try {
       const music = await getMusicInstance();
-      loadingStatus.textContent = "Waiting for authorization…";
-      await music.authorize();
+      if (!music.isAuthorized) {
+        loadingStatus.textContent = "Waiting for authorization…";
+        await music.authorize();
+      }
 
       loadingStatus.textContent = "Reading your library…";
       const songs = await fetchLibrarySongs(music, (count) => {
