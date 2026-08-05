@@ -36,10 +36,11 @@ npm install jsonwebtoken
 node scripts/generate-token.js \
   --key ./AuthKey_XXXXXXXXXX.p8 \
   --keyId XXXXXXXXXX \
-  --teamId XXXXXXXXXX
+  --teamId XXXXXXXXXX \
+  --origin https://altosun154.github.io
 ```
 
-This prints a JWT valid for ~6 months (Apple's maximum).
+This prints a JWT valid for ~6 months (Apple's maximum). The `--origin` flag is optional but recommended since this is a public site: it locks the token so Apple only accepts it from requests whose page origin matches, so the token is useless if copied and used somewhere else. Pass `--origin` more than once if you're serving the site from more than one URL (e.g. a custom domain and the `github.io` one).
 
 ### 4. Wire it into the site
 
